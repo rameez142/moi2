@@ -58,8 +58,6 @@ import { RolesManagementComponent } from "./components/controls/roles-management
 import { ViewDefinitionComponent } from "./components/controls/view-definition.component";
 import { ProgramSettingComponent } from "./components/controls/program-setting.component";
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
-import { MapComponent } from './components/map/map.component';
-import { LayoutComponent } from './components/map/layout/layout.component';
 import { DxTreeViewModule } from "../../node_modules/devextreme-angular";
 
 @NgModule({
@@ -102,9 +100,7 @@ import { DxTreeViewModule } from "../../node_modules/devextreme-angular";
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
     ModalComponentDirective,
-    GroupByPipe,
-    MapComponent,
-    LayoutComponent
+    GroupByPipe
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },

@@ -1,35 +1,19 @@
 {
   "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "windowsAuthentication": true,
+    "anonymousAuthentication": false,
     "iisExpress": {
-      "applicationUrl": "http://localhost:2019/",
+      "applicationUrl": "http://localhost:2018/",
       "sslPort": 0
     }
   },
   "profiles": {
-    "Kestrel Development": {
-      "commandName": "Project",
-      "commandLineArgs": "dotnet run",
-      "environmentVariables": {
-        "ASPNETCORE_URLS": "http://localhost:2019",
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Kestrel Production": {
-      "commandName": "Project",
-      "executablePath": "dotnet",
-      "commandLineArgs": "dotnet run",
-      "environmentVariables": {
-        "ASPNETCORE_URLS": "http://localhost:2019",
-        "ASPNETCORE_ENVIRONMENT": "Production"
-      }
-    },
+  
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_URLS": "http://localhost:2019",
+        "ASPNETCORE_URLS": "http://localhost:2018",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
