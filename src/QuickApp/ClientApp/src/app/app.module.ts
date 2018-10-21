@@ -3,13 +3,12 @@
 // Email: support@ebenmonney.com
 // ====================================================
 
-import { NgModule, ErrorHandler } from "@angular/core";
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ToastaModule } from 'ngx-toasta';
@@ -18,8 +17,6 @@ import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { PopoverModule } from "ngx-bootstrap/popover";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { ChartsModule } from 'ng2-charts';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppErrorHandler } from './app-error.handler';
 import { AppTitleService } from './services/app-title.service';
@@ -60,6 +57,31 @@ import { ProgramSettingComponent } from "./components/controls/program-setting.c
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
 import { DxTreeViewModule } from "../../node_modules/devextreme-angular";
 
+import { DxMenuModule,DxContextMenuModule,DxSelectBoxModule,DxPopupModule,DxDataGridModule,DxButtonModule ,DxTemplateModule,DxLoadIndicatorModule,DxLoadPanelModule, DxTabPanelModule,DxCheckBoxModule } from "devextreme-angular";
+
+
+import { DispatchComponent } from './components/dispatcher/dispatch/dispatch.component';
+import { PatrolcarsComponent } from './components/maintainence/patrolcars/patrolcars.component';
+import { HandheldsComponent } from './components/maintainence/handhelds/handhelds.component';
+import { AccessoriesComponent } from './components/maintainence/accessories/accessories.component';
+import { HandheldinventoryComponent } from './components/maintainence/inventory/handheldinventory/handheldinventory.component';
+import { AccessoryinventoryComponent } from './components/maintainence/inventory/accessoryinventory/accessoryinventory.component';
+import { EmployeesComponent } from './components/dispatcher/employees/employees.component';
+import { PatrolCarsinventoryComponent } from './components/maintainence/inventory/patrolcarsinventory/patrolcarsinventory.component';
+import {MainComponent} from './components/maps/main/main.component';
+import {MapLeftNavDemoComponent} from './components/maps/map-left-nav.component';
+import {TopnavComponent} from './components/maps/topnav/topnav.component';
+import {SidenavComponent} from './components/maps/sidenav/sidenav.component';
+import {LayoutComponent} from './components/maps/layout/layout.component';
+import {MapComponent} from './components/maps/map.component'
+import { CommonService } from './services/common.service';
+import { SharedMapServiceService } from './services/shared-map-service.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
+import { LayoutModule,BoxModule  } from '../../node_modules/angular-admin-lte';
+import { CoreModule } from './components/core/core.module';
+import { adminLteConf } from './admin-lte.conf';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -80,7 +102,11 @@ import { DxTreeViewModule } from "../../node_modules/devextreme-angular";
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    ChartsModule, DxTreeViewModule
+   DxTreeViewModule,
+    FormsModule,DxSelectBoxModule,DxContextMenuModule,DxMenuModule,
+    DxPopupModule,DxDataGridModule,DxButtonModule ,DxTemplateModule,DxLoadIndicatorModule,DxLoadPanelModule, DxTabPanelModule,DxCheckBoxModule,
+    LayoutModule,LoadingPageModule, MaterialBarModule,NgbModule,CoreModule,BoxModule ,
+    LayoutModule.forRoot(adminLteConf)
   ],
   declarations: [
     AppComponent,
@@ -100,7 +126,22 @@ import { DxTreeViewModule } from "../../node_modules/devextreme-angular";
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
     ModalComponentDirective,
-    GroupByPipe
+    GroupByPipe,
+    DispatchComponent,
+    DispatchComponent,
+    PatrolcarsComponent,
+    HandheldsComponent,
+    AccessoriesComponent,
+    HandheldinventoryComponent,
+    AccessoryinventoryComponent,
+    EmployeesComponent,
+    PatrolCarsinventoryComponent,
+    MapComponent,
+    MainComponent,
+    MapLeftNavDemoComponent,
+    SidenavComponent,
+    TopnavComponent,
+    LayoutComponent
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },
@@ -115,8 +156,13 @@ import { DxTreeViewModule } from "../../node_modules/devextreme-angular";
     AccountEndpoint,
     LocalStoreManager,
     EndpointFactory,
-    ModalService
+    ModalService,
+    CommonService,
+    SharedMapServiceService
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
   bootstrap: [AppComponent]
 })
 export class AppModule {

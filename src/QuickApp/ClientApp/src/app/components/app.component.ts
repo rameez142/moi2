@@ -3,7 +3,9 @@
 // Email: support@ebenmonney.com
 // ====================================================
 
-import { Component, ViewEncapsulation, OnInit, OnDestroy, ViewChildren, AfterViewInit, QueryList, ElementRef } from "@angular/core";
+import { Component, ViewEncapsulation,OnInit, OnDestroy, ViewChildren, AfterViewInit, QueryList, ElementRef } from "@angular/core";
+import { trigger, state, style, transition, animate} from '@angular/animations';
+
 import { Router, NavigationStart } from '@angular/router';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -18,6 +20,7 @@ import { AuthService } from '../services/auth.service';
 import { ConfigurationService } from '../services/configuration.service';
 import { Permission } from '../models/permission.model';
 import { LoginComponent } from "../components/login/login.component";
+import { LayoutService } from 'angular-admin-lte';
 
 var alertify: any = require('../assets/scripts/alertify.js');
 
@@ -26,7 +29,19 @@ var alertify: any = require('../assets/scripts/alertify.js');
   selector: "app-root",
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(100%, 0, 0)'
+      })),
+      transition('in => out', animate('400ms ease-in-out')),
+      transition('out => in', animate('400ms ease-in-out'))
+    ]),
+  ]
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
@@ -48,7 +63,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   loginModal: ModalDirective;
   loginControl: LoginComponent;
+  public customLayout: boolean;
+  menuState:string = 'out';
 
+  toggleMenu() {
+    this.menuState = this.menuState === 'out' ? 'in' : 'out';
+
+  }
 
   get notificationsTitle() {
 
@@ -61,7 +82,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(storageManager: LocalStoreManager, private toastaService: ToastaService, private toastaConfig: ToastaConfig,
+  constructor(private layoutService: LayoutService,storageManager: LocalStoreManager, private toastaService: ToastaService, private toastaConfig: ToastaConfig,
     private accountService: AccountService, private alertService: AlertService, private notificationService: NotificationService, private appTitleService: AppTitleService,
     private authService: AuthService, private translationService: AppTranslationService, public configurations: ConfigurationService, public router: Router) {
 
@@ -120,6 +141,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
+    this.layoutService.isCustomLayout.subscribe((value: boolean) => {
+      this.customLayout = value;
+    });
+  
     this.isUserLoggedIn = this.authService.isLoggedIn;
 
     // 1 sec to ensure all the effort to get the css animation working is appreciated :|, Preboot screen is removed .5 sec later

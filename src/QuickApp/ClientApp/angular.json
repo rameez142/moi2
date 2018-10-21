@@ -29,6 +29,12 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap-css-only/css/bootstrap.css", 
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./node_modules/ionicons/css/ionicons.css", 
+              "./node_modules/prismjs/themes/prism-tomorrow.css",
+              "./node_modules/admin-lte-css/dist/css/AdminLTE.css",
+              "./node_modules/admin-lte-css/dist/css/skins/_all-skins.css",
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/app/assets/styles/modal-popup.less"
@@ -38,7 +44,9 @@
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/bootstrap-toggle/js/bootstrap-toggle.js",
               "node_modules/bootstrap-select/dist/js/bootstrap-select.js",
-              "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"
+              "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-typescript.js"
             ]
           },
           "configurations": {
@@ -86,9 +94,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
-            ],
+              "src/styles.css"],
             "scripts": [],
             "assets": [
               "src/assets"
