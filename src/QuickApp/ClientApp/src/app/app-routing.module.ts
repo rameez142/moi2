@@ -26,11 +26,11 @@ import { AccessoryinventoryComponent } from './components/maintainence/inventory
 
 const routes: Routes = [
    
-  { path: "login", component: LoginComponent, data: { title: "Login" } }, 
-  { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
-  {path: "",component: HomeComponent, canActivate: [AuthGuard], data: { title: "Home" }},
+  { path: "login", component: LoginComponent, data: { title: "" } }, 
+  { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "" } },
+  {path: "",component: HomeComponent, canActivate: [AuthGuard], data: { title: "" }},
 
-  {path: "home",component: HomeComponent, canActivate: [AuthGuard], data: { title: "Home" }},
+  {path: "home",component: HomeComponent, canActivate: [AuthGuard], data: { title: "" }},
      {
       path: 'maintainence',
       children: [
